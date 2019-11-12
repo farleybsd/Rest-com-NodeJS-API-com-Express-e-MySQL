@@ -2,3 +2,7 @@
     npm init
 2 - Instalando o Express
     npm i express
+3 - Instalando Nodemon
+    npm install --save-dev  nodemon
+4 - consign
+    npm install consign
