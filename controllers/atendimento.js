@@ -8,6 +8,8 @@ module.exports = app => {
 
     app.post('/atendimentos',(req,res)=>{
 
+        console.log(req.body)
+
         res.send({"mensagem":"Voçê está na rota de atendimento realizando um post"})
 
     })
