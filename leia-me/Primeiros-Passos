@@ -1,0 +1,4 @@
+1 - Criando Projeto
+    npm init
+2 - Instalando o Express
+    npm i express
