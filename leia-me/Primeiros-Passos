@@ -9,3 +9,5 @@
 
 5 - Instalando Parser
     npm install body-parser
+6 - Mysql
+    npm install mysql

@@ -1,3 +1,5 @@
+const Atendimento = require('../models/atendimentos')
+
 module.exports = app => {
 
     app.get('/atendimentos',(req,res)=>{
@@ -8,9 +10,9 @@ module.exports = app => {
 
     app.post('/atendimentos',(req,res)=>{
 
-        console.log(req.body)
-
-        res.send({"mensagem":"Voçê está na rota de atendimento realizando um post"})
+        const atendimento = req.body
+        Atendimento.adiciona(atendimento)
+        res.send({"mensagem":"Post Atendimento Ok!"})
 
     })
 
