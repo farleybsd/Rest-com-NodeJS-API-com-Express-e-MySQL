@@ -1,13 +1,20 @@
 1 - Criando Projeto
     npm init
+
 2 - Instalando o Express
     npm i express
+
 3 - Instalando Nodemon
     npm install --save-dev  nodemon
+
 4 - consign
     npm install consign
 
 5 - Instalando Parser
     npm install body-parser
+
 6 - Mysql
     npm install mysql
+
+7 - Convertendo Data
+    npm install moment

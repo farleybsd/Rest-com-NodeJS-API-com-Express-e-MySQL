@@ -13,6 +13,8 @@ class tabelas{
         cliente varchar(50) not null,
         pet varchar(20),
         servico varchar(20) not null,
+        data datetime not null,
+        datacriacao datetime not null,
         status varchar(20) not null,
         observacoes text,
         Primary Key(id))
