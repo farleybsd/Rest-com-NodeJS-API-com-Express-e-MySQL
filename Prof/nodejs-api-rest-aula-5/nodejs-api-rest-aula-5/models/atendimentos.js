@@ -1,9 +1,7 @@
 const moment = require('moment')
 const conexao = require('../infraestrutura/conexao')
 
-
-class Atendimento{
-
+class Atendimento {
     adiciona(atendimento, res) {
         const dataCriacao = moment().format('YYYY-MM-DD HH:MM:SS')
         const data = moment(atendimento.data, 'DD/MM/YYYY').format('YYYY-MM-DD HH:MM:SS')
@@ -42,31 +40,27 @@ class Atendimento{
                 }
             })
         }
-            
+       
     }
 
-    lista(res){
-    
-        const sql = 'Select * from atendimentos'
-        conexao.query(sql,(erro,resultados)=>{
-            if(erro){
+    lista(res) {
+        const sql = 'SELECT * FROM Atendimentos'
 
+        conexao.query(sql, (erro, resultados) => {
+            if(erro) {
                 res.status(400).json(erro)
-            } else{
+            } else {
                 res.status(200).json(resultados)
             }
-
         })
-
     }
 
-    buscaPorId(id,res){
+    buscaPorId(id, res) {
+        const sql = `SELECT * FROM Atendimentos WHERE id=${id}`
 
-        const sql = ` Select * from atendimentos where id= ${id}`
-       
-        conexao.query(sql,(erro,resultados)=>{
+        conexao.query(sql, (erro, resultados) => {
             const atendimento = resultados[0]
-            if(erro){
+            if(erro) {
                 res.status(400).json(erro)
             } else {
                 res.status(200).json(atendimento)
@@ -74,37 +68,32 @@ class Atendimento{
         })
     }
 
-    altera(id,valores,res){
-
-        if(valores.data){
+    altera(id, valores, res) {
+        if(valores.data) {
             valores.data = moment(valores.data, 'DD/MM/YYYY').format('YYYY-MM-DD HH:MM:SS')
-        }
+        }      
+        const sql = 'UPDATE Atendimentos SET ? WHERE id=?'
 
-        const sql= 'Update atendimentos set ? where id=?'
-
-        conexao.query(sql,[valores,id],(erro,resultados)=>{
-
-            if(erro){
+        conexao.query(sql, [valores, id], (erro, resultados) => {
+            if(erro) {
                 res.status(400).json(erro)
-            } else{
-                res.status(200).json({...valores,id})
+            } else {
+                res.status(200).json({...valores, id})
             }
         })
-
     }
 
-    deleta(id,res){
-        
-        const sql = 'DELETE FROM Atendimentos where id=?'
-        conexao.query(sql,id,(erro,resultados)=>{
-           if(erro){
-               res.status(400).json(erro)
-           } else{
-            res.status(200).json({id})
-           }
+    deleta(id, res) {
+        const sql = 'DELETE FROM Atendimentos WHERE id=?'
+
+        conexao.query(sql, id, (erro, resultados) => {
+            if(erro) {
+                res.status(400).json(erro)
+            } else {
+                res.status(200).json({id})
+            }
         })
     }
-
 }
 
 module.exports = new Atendimento
